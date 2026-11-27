@@ -1,6 +1,6 @@
 {
   "name": "skill-distillation-lighthouse",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "把一次真实的运维/开发实战沉淀成 AI 可直接加载调用的技能仓：实战脱敏报告 → 坑表提炼 → 判定脚本化 → SKILL.md 主流程 → 版本化发布，并配套机器可执行的脱敏规范与自检门禁。",
   "author": {
     "name": "skill-distillation-lighthouse contributors"
