@@ -10,6 +10,57 @@ run → desensitized report → pitfall table → executable checks → SKILL.md
    machine scan gate                                               redaction self-check + CI
 ```
 
+[中文](README.md) · [🚀 Quick start](#-quick-start) · [Redaction standard](skills/skill-distillation-lighthouse/references/desensitization.md) · [Field reports](field-reports/) · [🤖 For AI agents](AGENTS.md)
+
+## 🚀 Quick start
+
+### Option 1: Claude Code plugin (recommended)
+
+```
+/plugin install skill-distillation-lighthouse --marketplace zejun-moon/skill-distillation-lighthouse
+```
+
+Then just say: *"Distil this troubleshooting session into a public skill repo, desensitized."*
+The skill loads on its own and walks the **7 steps**, each with a **pass condition**.
+
+### Option 2: Install the skill manually (any agent that understands SKILL.md)
+
+```bash
+git clone https://github.com/zejun-moon/skill-distillation-lighthouse.git
+cp -r skill-distillation-lighthouse/skills/skill-distillation-lighthouse ~/.claude/skills/
+```
+
+### Option 3: Skip the AI, use the tools
+
+The three scripts are copy-paste ready for any repo (see "Three tools you can take and use
+immediately" below):
+
+```bash
+# scan your own repo for anything that needs redaction
+python3 skills/skill-distillation-lighthouse/scripts/scan-sensitive.py --root /path/to/repo
+```
+
+### 🤖 For AI agents: what triggers a load
+
+The `SKILL.md` frontmatter carries **bilingual trigger words** — an AI should load this skill
+when it hears:
+
+| What you say | What the AI should do |
+|---|---|
+| "Turn this experience into a skill" / "write a skill" | follow the **7-step flow** in `SKILL.md` |
+| "Can this repo be public? Do I need to redact it?" | read the threat model + replacement table in `references/desensitization.md` |
+| "How do I make an AI read a repo and call the skill?" | read the frontmatter/trigger guidance in `references/skill-authoring.md` |
+| "How do I turn the pitfalls I hit into a skill?" | read `references/pitfalls.md` + `field-reports/` |
+| "How do I write a repo self-check / secret scanner?" | copy `tools/check_repo.py` + `tests/` + `scripts/` |
+
+**Cheapest way to use it**: have the AI read **only**
+`skills/skill-distillation-lighthouse/SKILL.md` first (the main flow and its pass conditions),
+then pull in `references/` **on demand** — don't dump the whole repo into the context window.
+
+**Also know when not to use it**: `SKILL.md` opens with "when NOT to use this skill"
+(just taking a note / the content can't be published and won't go to GitHub / the experience is
+one-off → a knowledge base or incident note is enough; don't over-engineer).
+
 ## Two questions this repo answers
 
 ### ① How do you distil experience into a skill?
