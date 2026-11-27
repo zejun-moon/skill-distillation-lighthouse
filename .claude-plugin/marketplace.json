@@ -5,13 +5,13 @@
   },
   "metadata": {
     "description": "从实战沉淀 AI 技能仓的方法论 + 机器可执行的脱敏规范",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "skill-distillation-lighthouse",
       "source": "./",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "从实战沉淀 AI 技能仓的七步流程，含脱敏规范（威胁模型 + 替换表 + 硬规则 + 机器门禁）、写作规范、仓库规范、9 条流程坑，以及三个可直接复用的工具：脱敏扫描器 / 结构校验器 / 骨架生成器。",
       "author": {
         "name": "skill-distillation-lighthouse contributors"
