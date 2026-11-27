@@ -10,6 +10,55 @@
               机器扫描门禁                        脱敏自检 + CI
 ```
 
+[English](README.en.md) · [🚀 快速开始](#-快速开始) · [脱敏规范](skills/skill-distillation-lighthouse/references/desensitization.md) · [实战报告](field-reports/) · [🤖 给 AI Agent](AGENTS.md)
+
+## 🚀 快速开始
+
+### 方式一：Claude Code 插件（推荐）
+
+```
+/plugin install skill-distillation-lighthouse --marketplace zejun-moon/skill-distillation-lighthouse
+```
+
+然后直接说：「帮我把这次排障的经验脱敏后沉淀成一个能公开发布的技能仓」——
+技能会自动加载，按七步推进，**每一步都有通过条件**。
+
+### 方式二：手动安装技能（任何支持 SKILL.md 的 agent）
+
+```bash
+git clone https://github.com/zejun-moon/skill-distillation-lighthouse.git
+cp -r skill-distillation-lighthouse/skills/skill-distillation-lighthouse ~/.claude/skills/
+```
+
+### 方式三：不用 AI，直接用工具
+
+三个脚本可拷到任何仓直接用（详见下文「三个可以直接拿去用的工具」）：
+
+```bash
+# 扫自己的仓，看有没有该脱敏的东西
+python3 skills/skill-distillation-lighthouse/scripts/scan-sensitive.py --root /path/to/repo
+```
+
+### 🤖 给 AI 用：什么话会触发加载
+
+`SKILL.md` 的 frontmatter 写了**中英双语触发词**，提到这些场景时 AI 就该加载本技能：
+
+| 你说的话 | AI 该做什么 |
+|---|---|
+| 「把这次的经验沉淀成技能 / 写一个 skill」 | 走 `SKILL.md` 的**七步流程** |
+| 「这仓要公开吗？代码和文档要不要脱敏」 | 读 `references/desensitization.md` 的威胁模型 + 替换表 |
+| 「怎么让 AI 读仓库调用技能」 | 读 `references/skill-authoring.md` 的 frontmatter 触发词写法 |
+| 「踩过的坑怎么变成技能」 | 读 `references/pitfalls.md` + `field-reports/` |
+| 「仓库自检 / 敏感信息扫描怎么写」 | 抄 `tools/check_repo.py` + `tests/` + `scripts/` |
+
+**最省上下文的用法**：让 AI **先只读**
+`skills/skill-distillation-lighthouse/SKILL.md`（主流程 + 每步通过条件），
+`references/` **按需再读**——不要一次性把整个仓塞进上下文。
+
+**也要知道什么时候别用**：`SKILL.md` 开头有「什么时候不要用本技能」
+（只想记笔记 / 内容不能公开且不发 GitHub / 经验只有一次性价值 →
+写知识库或事故记录就够了，别过度工程化）。
+
 ## 这个仓回答两个问题
 
 ### ① 怎么沉淀成技能
