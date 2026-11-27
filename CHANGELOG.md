@@ -13,6 +13,22 @@
 - `new-skill-scaffold.sh` 支持 `--from <已有仓>` 增量迁移
 - 给 `scan-sensitive.py` 加 `--baseline` 模式：只报相对上次新增的命中（适合进 CI 卡增量）
 
+## [0.1.1] - 2026-11-27
+
+README 补齐「AI 怎么用」——技能仓的**门面**，缺了它别人不知道从哪儿开始。
+
+### 新增
+
+- **README.md / README.en.md** 新增「🚀 快速开始」章节：
+  - 方式一：Claude Code 插件
+    （`/plugin install skill-distillation-lighthouse --marketplace zejun-moon/skill-distillation-lighthouse`）
+  - 方式二：手动把 `skills/skill-distillation-lighthouse/` 放进 skills 目录（任何支持 SKILL.md 的 agent）
+  - 方式三：不用 AI，直接用三个通用工具
+  - 「🤖 给 AI 用」：触发词对照表（你说什么 → AI 该读哪篇）+
+    最省上下文的用法（先只读 `SKILL.md`，`references/` 按需再读）+
+    什么时候**不要**用本技能
+- 顶部导航行（README ↔ 快速开始 ↔ 脱敏规范 ↔ 实战报告 ↔ 给 AI Agent）
+
 ## [0.1.0] - 2026-11-27
 
 首个版本：从一次真实的「把内网实战经验做成公开技能仓」的产出中提炼。
